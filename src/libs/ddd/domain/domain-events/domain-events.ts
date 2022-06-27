@@ -43,7 +43,7 @@ export class DomainEvents {
     if (aggregate) {
       logger.debug(
         `[${aggregate.domainEvents.map(
-          event => event.constructor.name,
+          (event) => event.constructor.name,
         )}] published ${aggregate.id.value}`,
       );
       await Promise.all(
@@ -70,7 +70,7 @@ export class DomainEvents {
   private static removeAggregateFromPublishList(
     aggregate: AggregateRoot<unknown>,
   ): void {
-    const index = this.aggregates.findIndex(a => a.equals(aggregate));
+    const index = this.aggregates.findIndex((a) => a.equals(aggregate));
     this.aggregates.splice(index, 1);
   }
 
@@ -84,7 +84,7 @@ export class DomainEvents {
       const handlers: DomainEventHandler[] =
         this.subscribers.get(eventName) || [];
       await Promise.all(
-        handlers.map(handler => {
+        handlers.map((handler) => {
           logger.debug(
             `[${handler.constructor.name}] handling ${event.constructor.name} ${event.aggregateId}`,
           );
