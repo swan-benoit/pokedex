@@ -29,6 +29,7 @@
     "@nestjs/swagger": "^5.2.1",
     "apollo-server-express": "^3.9.0",
     "graphql": "^16.5.0",
+    "immutable": "^4.1.0",
     "nanoid": "^4.0.0",
     "oxide.ts": "^1.0.0",
     "reflect-metadata": "^0.1.13",
