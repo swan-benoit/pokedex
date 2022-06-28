@@ -3,12 +3,11 @@ import { PokemonEntity, PokemonProps, } from '@src/pokemon/domain/entities/pokem
 import { ImageUrl } from '@src/pokemon/domain/value-objects/image-url.value-object';
 
 export class PokemonDaoMapper {
-  // Temp type, see sdk returned type
-  protected toDomainProps(pokemonJson: object): PokemonEntity {
-    const id = new UUID('12');
+  static toDomain(pokemonJson: any): PokemonEntity {
+    const id = UUID.generate();
     const props: PokemonProps = {
-      image_url: new ImageUrl('www.google.fr'),
-      name: 'Pikachu',
+      image_url: new ImageUrl(pokemonJson?.url),
+      name: pokemonJson?.name,
     };
 
     return new PokemonEntity({ id, props });

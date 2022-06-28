@@ -1,5 +1,4 @@
 export interface FindPokemons {
-  skip: number;
-  limit: number;
+  size: number;
   page: number;
 }

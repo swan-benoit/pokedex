@@ -6,11 +6,12 @@ export class FindPokemonsRequestMapper {
   static toDomain(
     params: FindPokemonsRequest,
   ): FindManyPaginatedParams<PokemonProps> {
+    const start = params.size * (params.page - 1);
+
     return {
       pagination: {
-        skip: params.skip,
-        page: params.page,
-        limit: params.limit,
+        limit: params.size,
+        skip: start + params.size,
       },
     };
   }

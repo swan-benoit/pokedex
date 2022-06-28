@@ -15,10 +15,10 @@ export class FindPokemonsGraphqlResolver {
     @Args('input') input: FindPokemonsRequest,
   ): Observable<Set<PokemonResponse>> {
     const query = FindPokemonsRequestMapper.toDomain(input);
-    const pokemonToResponse = (pokemon) => new PokemonResponse(pokemon);
+    const pokemonToResponse = (pokemons) => pokemons.map((pokemon) => new PokemonResponse(pokemon));
 
     return this.pokemonDao
       .findManyPaginated(query)
-      .pipe(map((pokemons) => pokemons.map(pokemonToResponse)));
+      .pipe(map(pokemonToResponse));
   }
 }

@@ -1,4 +1,5 @@
 import { DomainPrimitive, ValueObject, } from '@libs/ddd/domain/base-classes/value-object.base';
+import { ArgumentInvalidException } from '@exceptions';
 
 export class ImageUrl extends ValueObject<string> {
   constructor(value: string) {
@@ -11,9 +12,9 @@ export class ImageUrl extends ValueObject<string> {
   }
 
   protected validate({ value }: DomainPrimitive<string>): void {
-    // if (ImageUrl.isUrlValid(value)) {
-    //   throw new ArgumentInvalidException('Should be a valid URL');
-    // }
+    if (!ImageUrl.isUrlValid(value)) {
+      throw new ArgumentInvalidException('Should be a valid URL');
+    }
   }
 
   private static isUrlValid(value: string): boolean {

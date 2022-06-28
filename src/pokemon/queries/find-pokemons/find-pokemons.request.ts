@@ -10,7 +10,7 @@ export class FindPokemonsRequest implements FindPokemons {
     description: 'Size of the request collection',
   })
   @Field()
-  readonly limit: number;
+  readonly size: number;
 
   @ApiProperty({
     example: 3,
@@ -18,11 +18,4 @@ export class FindPokemonsRequest implements FindPokemons {
   })
   @Field()
   readonly page: number;
-
-  @ApiProperty({
-    example: 3,
-    description: 'Number of page to skip',
-  })
-  @Field()
-  readonly skip: number;
 }
