@@ -1,0 +1,17 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PokemonResponse {
+  name: String!
+  image_url: String!
+}
+
+type Query {
+  findPokemons(input: FindPokemonsRequest!): [PokemonResponse!]!
+}
+
+input FindPokemonsRequest {
+  size: Float!
+  page: Float!
+}
