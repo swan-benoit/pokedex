@@ -1,7 +1,4 @@
-import {
-  DomainPrimitive,
-  ValueObject,
-} from '../base-classes/value-object.base';
+import { DomainPrimitive, ValueObject, } from '../base-classes/value-object.base';
 
 export abstract class ID extends ValueObject<string> {
   constructor(value: string) {
