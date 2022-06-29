@@ -14,5 +14,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./back/src:/app/src
+    entrypoint: ["npm", "run", "start:dev"]
     ports:
       - "5000:5000"
