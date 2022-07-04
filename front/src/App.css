@@ -1,5 +1,8 @@
-.pokemon-container {
+.App {
   background-color: #282c34;
+}
+
+.pokemon-container {
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -9,5 +12,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination > * {
+  margin: .5rem;
 }
 
