@@ -1,43 +1,19 @@
 import React from 'react';
 import './App.css';
-import Pokemon from './components/Pokemon/Pokemon';
+import { Set } from 'immutable';
+import Pokemons from './components/Pokemons/Pokemons';
 
 function App() {
   return (
     <div className="App">
       <div className="pokemon-container">
-        {
-          getPokemon()
-              .map(pokemon => (
-                  <Pokemon name={pokemon.name} image_url={pokemon.image_url}></Pokemon>
-              ))
-        }
+        <Pokemons pokemons={Set()}></Pokemons>
       </div>
       <div className="pagination">
 
       </div>
     </div>
   );
-}
-
-function getPokemon(){
-  return [{
-    name:"pikachu",
-    image_url: "www.google.fr"
-  },
-    {
-      name:"pikachu",
-      image_url: "www.google.fr"
-    },
-    {
-      name:"pikachu",
-      image_url: "www.google.fr"
-    },
-    {
-      name:"pikachu",
-      image_url: "www.google.fr"
-    }
-  ]
 }
 
 export default App;
