@@ -8,9 +8,9 @@ interface PokemonsProps {
     page: number
 }
 
-const query =gql`
+const query = (size: number, page: number) => gql`
     query {
-        findPokemons(input: { size: 20, page: 2 }) {
+        findPokemons(input: { size: ${size}, page: ${page} }) {
             name,
             image_url,
         }
@@ -18,7 +18,7 @@ const query =gql`
 `;
 
 const Pokemons: FC<PokemonsProps> = (props) => {
-        const { loading, error, data } = useQuery(query);
+        const { loading, error, data } = useQuery(query(props.size, props.page));
 
         if (error) return <p>Error :(</p>;
 
