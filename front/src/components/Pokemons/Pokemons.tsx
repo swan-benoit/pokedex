@@ -26,7 +26,7 @@ const Pokemons: FC<PokemonsProps> = (props) => {
             data
                 .findPokemons
                 .map((pokemon: { name: string; image_url: string; }) => (
-                    <Pokemon name={pokemon.name} image_url={pokemon.image_url}></Pokemon>
+                    <Pokemon key={pokemon.image_url} name={pokemon.name} image_url={pokemon.image_url}></Pokemon>
                 ))
         }</>;
     }
