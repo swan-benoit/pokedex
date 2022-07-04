@@ -8,7 +8,7 @@ interface PokemonProps {
 
 const Pokemon: FC<PokemonProps> = (props) => (
   <div className="Pokemon">
-      <h1> {props.name} </h1>
+      <h3> {props.name} </h3>
       <img src={props.image_url} alt="#"/>
   </div>
 );
