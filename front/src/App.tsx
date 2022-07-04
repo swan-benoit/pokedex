@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Set } from 'immutable';
 import Pokemons from './components/Pokemons/Pokemons';
 
 function App() {
   return (
     <div className="App">
       <div className="pokemon-container">
-        <Pokemons pokemons={Set()}></Pokemons>
+        <Pokemons page={0} size={20}></Pokemons>
       </div>
       <div className="pagination">
 
