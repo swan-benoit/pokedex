@@ -6,7 +6,7 @@ export class PokemonDaoMapper {
   static toDomain(pokemonJson: any): PokemonEntity {
     const id = UUID.generate();
     const props: PokemonProps = {
-      image_url: new ImageUrl(pokemonJson?.url),
+      image_url: new ImageUrl(pokemonJson?.image_url),
       name: pokemonJson?.name,
     };
 

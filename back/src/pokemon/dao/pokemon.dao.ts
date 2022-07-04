@@ -3,7 +3,7 @@ import { FindManyPaginatedParams, PaginationMeta, } from '@libs/ddd/domain/ports
 import { Set } from 'immutable';
 import { PokemonEntity, PokemonProps, } from '@src/pokemon/domain/entities/pokemon.entity';
 import { Injectable } from '@nestjs/common';
-import { catchError, filter, map, Observable, of } from 'rxjs';
+import { filter, forkJoin, map, Observable, switchMap } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { Option } from 'oxide.ts';
 import { PokemonDaoMapper } from '@src/pokemon/dao/pokemon.dao-mapper';
@@ -22,12 +22,20 @@ export class PokemonDao implements PokemonDaoPort {
     return this.httpService.get(url).pipe(
       map((response) => response?.data?.results),
       filter(Boolean),
-      map((result) => Set(result)),
+      switchMap((jsonSet) =>
+        forkJoin(jsonSet.map((json) => this.resolveImage(json))),
+      ),
+      map(Set),
       map((jsonSet) => jsonSet.map(PokemonDaoMapper.toDomain)),
-      catchError((err) => {
-        console.log(err, 'catch');
-        return of(err);
-      }),
+    );
+  }
+
+  private resolveImage(json) {
+    return this.httpService.get(json.url).pipe(
+      map((response) => ({
+        ...json,
+        image_url: response?.data?.sprites?.front_default,
+      })),
     );
   }
 
